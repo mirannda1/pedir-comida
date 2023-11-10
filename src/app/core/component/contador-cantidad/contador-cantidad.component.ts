@@ -13,7 +13,7 @@ import { IonicModule } from '@ionic/angular';
 export class ContadorCantidadComponent  implements OnInit {
 
   ngOnInit() {
-    this.cantidad = this.cantidadTnicial;
+    this.cantidad = this.cantidadInicial;
   }
 
   @Output() cantidadCambiada = new EventEmitter<number>();
