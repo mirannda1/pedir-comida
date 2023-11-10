@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component,EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component,EventEmitter, Input, OnInit, Output, inject } from '@angular/core';
 import { IonicModule } from '@ionic/angular';
 
 
@@ -12,11 +12,9 @@ import { IonicModule } from '@ionic/angular';
 })
 export class ContadorCantidadComponent  implements OnInit {
 
-
-
-  constructor() { }
-
-  ngOnInit() {}
+  ngOnInit() {
+    this.cantidad = this.cantidadTnicial;
+  }
 
   @Output() cantidadCambiada = new EventEmitter<number>();
   @Input() cantidadInicial:number = 1;
@@ -25,13 +23,15 @@ export class ContadorCantidadComponent  implements OnInit {
 
   sumar(){
     this.cantidad = this.cantidad+1;
+    this.cantidadCambiada.emit(this.cantidad);
 
   }
 
   restar(){
 
     if(this.cantidad > 1){
-      this.cantidad = this.cantidad-1
+      this.cantidad = this.cantidad-1;
+      this.cantidadCambiada.emit(this.cantidad);
     }
   }
 
